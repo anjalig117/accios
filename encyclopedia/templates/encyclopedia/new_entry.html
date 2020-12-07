@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+<h1>Create New Page</h1>
+<br>
+<div>
+	<form action="{% url 'save_entry' %}" method="post" class="pr-3">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" name="title" placeholder="Enter title of entry" class="form-control" id="title">
+		</div>
+		
+		<div class="form-group">
+			<label for="content">Markdown Content</label>
+			<textarea name="content" rows="3" class="form-control" id="content"></textarea>
+			<small class="form-text text-muted"><a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax" style="text-decoration: none;" class="text-muted">GitHub's Markdown Guide</a></small>
+		</div>
+		
+		<input type="submit" value="Save" class="btn btn-secondary">
+	</form>
+</div>
+{% endblock %}
